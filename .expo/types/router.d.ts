@@ -1,0 +1,14 @@
+/* eslint-disable */
+import * as Router from 'expo-router';
+
+export * from 'expo-router';
+
+declare module 'expo-router' {
+  export namespace ExpoRouter {
+    export interface __routes<T extends string | object = string> {
+      hrefInputParams: { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/`; params?: Router.UnknownInputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `/private/Dashboard`; params?: Router.UnknownInputParams; } | { pathname: `/private/Indstillinger`; params?: Router.UnknownInputParams; } | { pathname: `/private/Kalender`; params?: Router.UnknownInputParams; } | { pathname: `/private/Kunder`; params?: Router.UnknownInputParams; } | { pathname: `/private/Opgaver`; params?: Router.UnknownInputParams; } | { pathname: `/private/Projects`; params?: Router.UnknownInputParams; };
+      hrefOutputParams: { pathname: Router.RelativePathString, params?: Router.UnknownOutputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownOutputParams } | { pathname: `/`; params?: Router.UnknownOutputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownOutputParams; } | { pathname: `/private/Dashboard`; params?: Router.UnknownOutputParams; } | { pathname: `/private/Indstillinger`; params?: Router.UnknownOutputParams; } | { pathname: `/private/Kalender`; params?: Router.UnknownOutputParams; } | { pathname: `/private/Kunder`; params?: Router.UnknownOutputParams; } | { pathname: `/private/Opgaver`; params?: Router.UnknownOutputParams; } | { pathname: `/private/Projects`; params?: Router.UnknownOutputParams; };
+      href: Router.RelativePathString | Router.ExternalPathString | `/${`?${string}` | `#${string}` | ''}` | `/_sitemap${`?${string}` | `#${string}` | ''}` | `/private/Dashboard${`?${string}` | `#${string}` | ''}` | `/private/Indstillinger${`?${string}` | `#${string}` | ''}` | `/private/Kalender${`?${string}` | `#${string}` | ''}` | `/private/Kunder${`?${string}` | `#${string}` | ''}` | `/private/Opgaver${`?${string}` | `#${string}` | ''}` | `/private/Projects${`?${string}` | `#${string}` | ''}` | { pathname: Router.RelativePathString, params?: Router.UnknownInputParams } | { pathname: Router.ExternalPathString, params?: Router.UnknownInputParams } | { pathname: `/`; params?: Router.UnknownInputParams; } | { pathname: `/_sitemap`; params?: Router.UnknownInputParams; } | { pathname: `/private/Dashboard`; params?: Router.UnknownInputParams; } | { pathname: `/private/Indstillinger`; params?: Router.UnknownInputParams; } | { pathname: `/private/Kalender`; params?: Router.UnknownInputParams; } | { pathname: `/private/Kunder`; params?: Router.UnknownInputParams; } | { pathname: `/private/Opgaver`; params?: Router.UnknownInputParams; } | { pathname: `/private/Projects`; params?: Router.UnknownInputParams; };
+    }
+  }
+}

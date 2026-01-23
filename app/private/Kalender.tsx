@@ -1,7 +1,7 @@
 import { Image, Pressable, Text } from 'react-native';
 import { ScrollView, View } from 'react-native';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import Styles from '@/components/styles';
+import Styles from '@/components/styles-app';
 import { router } from 'expo-router';
 import MenuWeb from '@/components/ui/MenuWeb';
 

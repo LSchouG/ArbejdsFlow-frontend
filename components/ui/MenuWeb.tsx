@@ -1,6 +1,6 @@
 import { Pressable, Text, View } from 'react-native';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-import Styles from '@/components/styles';
+import Styles from '@/components/styles-app';
 import { router } from 'expo-router';
 
 export default function MenuWeb() {
