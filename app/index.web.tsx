@@ -3,8 +3,11 @@ import { StyleSheet, View, ScrollView, Pressable, Text, Image, TextInput } from 
 import Styles from "@/components/styles-web";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import React from "react";
+import Constants from "expo-constants";
 
-const API_URL = process.env.EXPO_PUBLIC_API_URL;
+const API_URL = Constants.expoConfig?.extra?.API_URL;
+
+
 
 
 export default function HomeScreen() {
@@ -14,7 +17,8 @@ export default function HomeScreen() {
   const [showLogin, setShowLogin] = React.useState(true);
 
   // State for user
-  const [username, setUsername] = React.useState("");
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
@@ -22,19 +26,23 @@ export default function HomeScreen() {
   const [city, setCity] = React.useState("");
   const [zipCode, setZipCode] = React.useState("");
 
+
   function handleLogin() {
     // Implement login logic here
   }
 
   async function handleSignup() {
+    console.log("Signing up with:", { firstName, lastName, email, password, phone, address, city, zipCode });
+    console.log("API URL:", API_URL);
     try {
-      const response = await fetch(`${API_URL}/api/auth/register`, {
+      const response = await fetch(`${API_URL}register/kunder`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username,
+          firstName,
+          lastName,
           email,
           password,
           phone,
@@ -71,8 +79,8 @@ export default function HomeScreen() {
 
       {showLogin && (
         <View style={styles.loginContainer}>
-          <Text>Bruger navn: </Text>
-          <TextInput style={{ height: 40, borderColor: "gray", borderWidth: 1, padding: 10 }} placeholder="..." value={username} onChangeText={setUsername} />
+          <Text>Email: </Text>
+          <TextInput style={{ height: 40, borderColor: "gray", borderWidth: 1, padding: 10 }} placeholder="..." value={email} onChangeText={setEmail} />
 
           <Text>Password: </Text>
           <TextInput style={{ height: 40, borderColor: "gray", borderWidth: 1, padding: 10 }} placeholder="..." value={password} onChangeText={setPassword} />
@@ -89,8 +97,11 @@ export default function HomeScreen() {
       )}
       {!showLogin && (
         <View style={styles.loginContainer}>
-          <Text>Bruger navn: </Text>
-          <TextInput style={{ height: 40, borderColor: "gray", borderWidth: 1, padding: 10 }} placeholder="..." value={username} onChangeText={setUsername} />
+          <Text>Fornavn: </Text>
+          <TextInput style={{ height: 40, borderColor: "gray", borderWidth: 1, padding: 10 }} placeholder="..." value={firstName} onChangeText={setFirstName} />
+
+          <Text>Efternavn: </Text>
+          <TextInput style={{ height: 40, borderColor: "gray", borderWidth: 1, padding: 10 }} placeholder="..." value={lastName} onChangeText={setLastName} />
 
           <Text>Email: </Text>
           <TextInput style={{ height: 40, borderColor: "gray", borderWidth: 1, padding: 10 }} placeholder="..." value={email} onChangeText={setEmail} />
