@@ -5,7 +5,7 @@ import Styles from "@/components/styles-app";
 import { router } from "expo-router";
 import MenuWeb from "@/components/ui/MenuWeb";
 
-export default function HomeScreen() {
+export default function dashboard() {
   const colorScheme = useColorScheme() ?? "light";
   const styles = Styles(colorScheme);
 
