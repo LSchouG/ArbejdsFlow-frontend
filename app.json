@@ -1,3 +1,4 @@
+// app.json
 {
   "expo": {
     "name": "ArbejdsFlowApp",
@@ -10,7 +11,7 @@
     "newArchEnabled": true,
 
     "extra": {
-      "EXPO_PUBLIC_API_URL": "http://192.168.8.25:8080/"
+      "API_URL": "https://localhost:8443/"
     },
 
     "ios": {

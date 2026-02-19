@@ -12,7 +12,7 @@ const API_URL = Constants.expoConfig?.extra?.API_URL;
 export default function index() {
   const colorScheme = useColorScheme() ?? "light";
   const styles = Styles(colorScheme);
-  const { verify } = useAuth() || {};
+  const { fetchUser } = useAuth() || {};
   const router = useRouter();
   const [showLogin, setShowLogin] = React.useState(true);
 
@@ -154,6 +154,8 @@ export default function index() {
         }),
       });
 
+      console.log("Login response headers:", [...response.headers.entries()]);
+
       const data = await response.json();
 
       if (!response.ok) {
@@ -163,10 +165,13 @@ export default function index() {
 
       alert("Login successful!");
       clearForm();
-      if (await verify()){
+      console.log("fetchUser login..." + fetchUser());
+      if (await fetchUser()){
       router.replace("/dashboard");
+      console.log("Login verified, navigating to dashboard");
       } else{
       router.replace("/");
+      console.log("Login verification failed, staying on login page");
       }
     } catch (error) {
       if (error instanceof Error) {

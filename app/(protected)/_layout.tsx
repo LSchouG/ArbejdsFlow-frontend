@@ -6,7 +6,8 @@ export default function ProtectedLayout() {
 
   if (loading) return null;
 
-  if (!user) return <Redirect href="/login" />;
+  if (!user) return <Redirect href="/" />;
 
   return <Slot />;
 }
+ 
