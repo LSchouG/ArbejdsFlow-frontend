@@ -1,3 +1,4 @@
+// AuthProvider.tsx
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import Constants from "expo-constants";
 
@@ -8,35 +9,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  async function verify(): Promise<boolean> {
+  async function fetchUser(): Promise<boolean> {
     try {
-      const res = await fetch(`${API_URL}auth/verify`, {
+      const res = await fetch(`${API_URL}auth/me`, {
         method: "GET",
         credentials: "include",
       });
 
-      if (res.ok) {
-        const data = await res.json();
-        setUser(data);
-        return true;
-      } else {
+      console.log("Auth/me → status:", res.status);
+      console.log("Auth/me → headers:", [...res.headers.entries()]);
+
+      if (res.status === 401) {
         setUser(null);
         return false;
       }
+
+      const data = await res.json();
+      setUser(data);
+      return true;
+
     } catch (error) {
       setUser(null);
       return false;
+
     } finally {
       setLoading(false);
     }
   }
 
   useEffect(() => {
-    verify();
+    fetchUser();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, verify }}>
+    <AuthContext.Provider value={{ user, loading, setUser, refreshUser: fetchUser }}>
       {children}
     </AuthContext.Provider>
   );
